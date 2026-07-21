@@ -1,24 +1,57 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Suspense } from "react";
+import { HeroSection } from "@/components/sections/hero-section";
+import { AboutSection } from "@/components/sections/about-section";
+import { CategoriesSection } from "@/components/sections/categories-section";
+import { StatsSection } from "@/components/sections/stats-section";
+import { TimelineSection } from "@/components/sections/timeline-section";
+import { TeamSection } from "@/components/sections/team-section";
+import { FaqSection } from "@/components/sections/faq-section";
+import { CtaSection } from "@/components/sections/cta-section";
+import {
+  categoriesQuery,
+  faqsQuery,
+  statsQuery,
+  teamQuery,
+  timelineQuery,
+} from "@/lib/queries";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  loader: ({ context }) => {
+    context.queryClient.ensureQueryData(categoriesQuery);
+    context.queryClient.ensureQueryData(statsQuery);
+    context.queryClient.ensureQueryData(timelineQuery);
+    context.queryClient.ensureQueryData(teamQuery);
+    context.queryClient.ensureQueryData(faqsQuery);
+  },
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function SectionFallback() {
+  return <div className="h-96 animate-pulse" aria-hidden />;
+}
+
+function HomePage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <HeroSection />
+      <AboutSection />
+      <Suspense fallback={<SectionFallback />}>
+        <CategoriesSection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <StatsSection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <TimelineSection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <TeamSection />
+      </Suspense>
+      <Suspense fallback={<SectionFallback />}>
+        <FaqSection />
+      </Suspense>
+      <CtaSection />
+    </>
   );
 }
