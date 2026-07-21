@@ -14,7 +14,273 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon: string | null
+          id: string
+          name: string
+          slug: string
+          sort_order: number
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name: string
+          slug: string
+          sort_order?: number
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon?: string | null
+          id?: string
+          name?: string
+          slug?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      diseases: {
+        Row: {
+          age_group: string | null
+          category: string | null
+          causes: string[] | null
+          created_at: string
+          description: string | null
+          diagnosis: string | null
+          id: string
+          image_url: string | null
+          name: string
+          prevention: string | null
+          risk_level: string | null
+          severity: string | null
+          short_description: string | null
+          slug: string
+          sort_order: number
+          symptoms: string[] | null
+          treatment: string | null
+        }
+        Insert: {
+          age_group?: string | null
+          category?: string | null
+          causes?: string[] | null
+          created_at?: string
+          description?: string | null
+          diagnosis?: string | null
+          id?: string
+          image_url?: string | null
+          name: string
+          prevention?: string | null
+          risk_level?: string | null
+          severity?: string | null
+          short_description?: string | null
+          slug: string
+          sort_order?: number
+          symptoms?: string[] | null
+          treatment?: string | null
+        }
+        Update: {
+          age_group?: string | null
+          category?: string | null
+          causes?: string[] | null
+          created_at?: string
+          description?: string | null
+          diagnosis?: string | null
+          id?: string
+          image_url?: string | null
+          name?: string
+          prevention?: string | null
+          risk_level?: string | null
+          severity?: string | null
+          short_description?: string | null
+          slug?: string
+          sort_order?: number
+          symptoms?: string[] | null
+          treatment?: string | null
+        }
+        Relationships: []
+      }
+      faqs: {
+        Row: {
+          answer: string
+          category: string | null
+          created_at: string
+          id: string
+          question: string
+          sort_order: number
+        }
+        Insert: {
+          answer: string
+          category?: string | null
+          created_at?: string
+          id?: string
+          question: string
+          sort_order?: number
+        }
+        Update: {
+          answer?: string
+          category?: string | null
+          created_at?: string
+          id?: string
+          question?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      stats: {
+        Row: {
+          created_at: string
+          icon: string | null
+          id: string
+          label: string
+          sort_order: number
+          suffix: string | null
+          value: number
+        }
+        Insert: {
+          created_at?: string
+          icon?: string | null
+          id?: string
+          label: string
+          sort_order?: number
+          suffix?: string | null
+          value: number
+        }
+        Update: {
+          created_at?: string
+          icon?: string | null
+          id?: string
+          label?: string
+          sort_order?: number
+          suffix?: string | null
+          value?: number
+        }
+        Relationships: []
+      }
+      team_members: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          email: string | null
+          github_url: string | null
+          id: string
+          linkedin_url: string | null
+          name: string
+          role: string | null
+          sort_order: number
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          github_url?: string | null
+          id?: string
+          linkedin_url?: string | null
+          name: string
+          role?: string | null
+          sort_order?: number
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          github_url?: string | null
+          id?: string
+          linkedin_url?: string | null
+          name?: string
+          role?: string | null
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      timeline_events: {
+        Row: {
+          created_at: string
+          description: string | null
+          event_date: string
+          event_type: string | null
+          id: string
+          sort_order: number
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          event_date: string
+          event_type?: string | null
+          id?: string
+          sort_order?: number
+          title: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          event_date?: string
+          event_type?: string | null
+          id?: string
+          sort_order?: number
+          title?: string
+        }
+        Relationships: []
+      }
+      tools: {
+        Row: {
+          advantages: string[] | null
+          applications: string[] | null
+          cost: string | null
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          limitations: string[] | null
+          name: string
+          slug: string
+          sort_order: number
+          status: string | null
+          tagline: string | null
+          technology: string | null
+        }
+        Insert: {
+          advantages?: string[] | null
+          applications?: string[] | null
+          cost?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          limitations?: string[] | null
+          name: string
+          slug: string
+          sort_order?: number
+          status?: string | null
+          tagline?: string | null
+          technology?: string | null
+        }
+        Update: {
+          advantages?: string[] | null
+          applications?: string[] | null
+          cost?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          limitations?: string[] | null
+          name?: string
+          slug?: string
+          sort_order?: number
+          status?: string | null
+          tagline?: string | null
+          technology?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
